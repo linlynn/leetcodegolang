@@ -9,15 +9,12 @@ func rotate(nums []int, k int) {
 	l := len(nums)
 	ret := make([]int, l)
 	for i := 0; i < l; i++ {
-		if (k + i) < l {
-			ret[i+k] = nums[i]
-		} else {
-			ret[(i+k)%l] = nums[i]
-		}
+		ret[(i+k)%l] = nums[i]
 
 	}
 	for i := 0; i < l; i++ {
 		nums[i] = ret[i]
+                fmt.Println(nums[i])
 	}
 
 }
