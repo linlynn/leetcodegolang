@@ -16,17 +16,17 @@ func findErrorNums(nums []int) []int {
 	res := []int{}
 	hash1 := make(map[int]int)
 	for _, j := range nums {
-		hash1[j]++
-	}
-	for i, j := range hash1 {
-		if j == 2 {
-			res = append(res, i)
+		_, ok := hash1[j]
+		if ok {
+			res = append(res, j)
+		} else {
+			hash1[j] = j
 		}
 	}
-	for i := 0; i < len(nums); i++ {
-		_, ok := hash1[i+1]
+	for i := 1; i <= len(nums); i++ {
+		_, ok := hash1[i]
 		if !ok {
-			res = append(res, i+1)
+			res = append(res, i)
 			return res
 		}
 	}
