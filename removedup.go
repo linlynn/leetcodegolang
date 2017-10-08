@@ -1,28 +1,24 @@
-// removedup.go
-package main
+package  main
 
-import (
-	"fmt"
-)
+
+// nums := {1,1,2}
+import "fmt"
 
 func removeDuplicates(nums []int) int {
 	if len(nums) == 0 {
 		return 0
 	}
-	newtail := 0
-	for i := 1; i < len(nums); i++ {
-		if nums[i] != nums[newtail] {
-			newtail = newtail + 1
-			nums[newtail] = nums[i]
+	i := 0
+	for k := i + 1  ; k <  len(nums) ; k ++  {
+		if nums[k] != nums[i] {
+			i ++
+			nums[i] = nums[k]
 		}
 	}
-	return newtail + 1
-
+	return i+1
 }
-
-func main() {
-	fmt.Println("Hello World!")
-	x := []int{1, 2, 2, 3}
-	y := removeDuplicates(x)
-	fmt.Println(y)
+func main(){
+	nums := []int{1,1,2,2,3,3,3,3}
+	x := removeDuplicates(nums)
+	fmt.Println(x)
 }
